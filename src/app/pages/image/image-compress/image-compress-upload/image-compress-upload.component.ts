@@ -1,8 +1,8 @@
 /**
  * Image Compress Component
- * @author    AppsPlaces <appsplaces@gmail.com>
- * @copyright Copyright (c) 2021
- * @license   AppsPlaces
+ * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @copyright Copyright (c) 2023
+
  */
 
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
@@ -117,8 +117,8 @@ export class ImageCompressUploadComponent implements OnInit {
 
     this.spinner.show();
 
-    this.zip.folder("iloveconverts");
-    let img = this.zip.folder("iloveconverts");
+    this.zip.folder("owlpdf");
+    let img = this.zip.folder("owlpdf");
 
     for (var i = 0; i < this.files.length; i++) {
       await Jimp.read(this.files[i].imgsrc).then(async (lenna) => {
@@ -140,7 +140,7 @@ export class ImageCompressUploadComponent implements OnInit {
       saveAs(this.singleImg, `${this.fileName}`);
     } else if (this.files.length > 1) {
       this.zip.generateAsync({ type: "blob" }).then(function (content) {
-        saveAs(content, "iloveconverts.zip");
+        saveAs(content, "owlpdf.zip");
       });
     }
 
@@ -154,7 +154,7 @@ export class ImageCompressUploadComponent implements OnInit {
       saveAs(this.singleImg, `${this.fileName}`);
     } else if (this.files.length > 1) {
       this.zip.generateAsync({ type: "blob" }).then(function (content) {
-        saveAs(content, "iloveconverts.zip");
+        saveAs(content, "owlpdf.zip");
       });
     }
     this.files = [];

@@ -1,8 +1,8 @@
 /**
  * Text Tools Converter Components
- * @author    AppsPlaces <appsplaces@gmail.com>
- * @copyright Copyright (c) 2021
- * @license   AppsPlaces
+ * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @copyright Copyright (c) 2023
+
  */
 
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';

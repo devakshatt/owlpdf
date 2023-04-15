@@ -1,9 +1,8 @@
 /**
  * Meta Tags Service
  * These tags are shown by search engines as a small text item in the search results
- * @author    AppsPlaces <appsplaces@gmail.com>
- * @copyright Copyright (c) 2021
- * @license   AppsPlaces
+ * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @copyright Copyright (c) 2023
  */
 
 import { Injectable } from '@angular/core';
@@ -15,8 +14,8 @@ import { Title, Meta } from '@angular/platform-browser';
 export class MetaServiceService {
 
   // Change and replace with your website information
-  websiteTitle: any = 'Test'; // Title of your website
-  websiteUrl: any = 'https://iloveconverts-pro.codevampires.com'; // Website URL
+  websiteTitle: any = 'OwlPDF | Effortlessly Convert Your PDFs With OwlPDF'; // Title of your website
+  websiteUrl: any = 'https://owlpdf.com'; // Website URL
 
   constructor(private title: Title,
     private meta: Meta) {

@@ -1,8 +1,8 @@
 /**
  * Privacy Policy Page Component
- * @author    AppsPlaces <appsplaces@gmail.com>
- * @copyright Copyright (c) 2021
- * @license   AppsPlaces
+ * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @copyright Copyright (c) 2023
+
  */
 
 import { Component, OnInit } from '@angular/core';
@@ -39,7 +39,7 @@ export class PrivacyPolicyComponent implements OnInit {
   // Update Meta Tags
   updateMetaTags(): void {
     let href = window.location.href;
-    let websiteTitle = 'iloveconverts'; // Your website title
+    let websiteTitle = 'owlpdf'; // Your website title
 
     // Set Title
     this.metaService.setTitle('Privacy Policy');

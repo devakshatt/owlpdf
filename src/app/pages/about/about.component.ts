@@ -1,8 +1,8 @@
 /**
  * About Page Component
- * @author    AppsPlaces <appsplaces@gmail.com>
+ * @author    AppsPlaces <akshataggarwal005@gmail.com>
  * @copyright Copyright (c) 2020
- * @license   AppsPlaces
+
  */
 
 import { Component, OnInit } from '@angular/core';
@@ -40,7 +40,7 @@ export class AboutComponent implements OnInit {
   // Update Meta Tags
   updateMetaTags(): void {
     let href = window.location.href;
-    let websiteTitle = 'iloveconverts'; // Your website title
+    let websiteTitle = 'owlpdf'; // Your website title
 
     // Set Title
     this.metaService.setTitle('About us');

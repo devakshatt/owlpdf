@@ -1,8 +1,8 @@
 /**
  * Conversion Tools Sample Datas
- * @author    AppsPlaces <appsplaces@gmail.com>
- * @copyright Copyright (c) 2021
- * @license   AppsPlaces
+ * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @copyright Copyright (c) 2023
+
  */
 
 import { Injectable } from '@angular/core';
@@ -17,27 +17,27 @@ export class SampleDataService {
   getSampleXML() {
     return `<urlset>
     <url>
-        <loc>https://iloveconverts.com/</loc>
+        <loc>https://owlpdf.com/</loc>
         <lastmod>2019-10-29T05:59:31+00:00</lastmod>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://iloveconverts.com/home</loc>
+        <loc>https://owlpdf.com/home</loc>
         <lastmod>2019-10-29T05:59:31+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://iloveconverts.com/image/convert-to-png</loc>
+        <loc>https://owlpdf.com/image/convert-to-png</loc>
         <lastmod>2019-10-29T05:59:31+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://iloveconverts.com/length-converter</loc>
+        <loc>https://owlpdf.com/length-converter</loc>
         <lastmod>2019-10-29T05:59:31+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://iloveconverts.com/fake-person-information-en</loc>
+        <loc>https://owlpdf.com/fake-person-information-en</loc>
         <lastmod>2019-10-29T05:59:31+00:00</lastmod>
         <priority>0.80</priority>
     </url>
@@ -48,15 +48,15 @@ export class SampleDataService {
   getSampleJSON() {
     return `[
       {
-        "Name":"iloveconverts",
-        "FirstName":"iloveconverts",
-        "LastName":"iloveconverts",
+        "Name":"owlpdf",
+        "FirstName":"owlpdf",
+        "LastName":"owlpdf",
         "Password":"123456"
       },
       {
-        "Name":"iloveconverts",
-        "FirstName":"iloveconverts", 
-        "LastName":"iloveconverts",
+        "Name":"owlpdf",
+        "FirstName":"owlpdf", 
+        "LastName":"owlpdf",
         "Password":"qwerty"
       }
     ]`
@@ -64,14 +64,14 @@ export class SampleDataService {
 
   getSampleCSV() {
     return `"Name","FirstName","LastName","Password"
-"iloveconverts","iloveconverts","iloveconverts","123456"
-"iloveconverts","iloveconverts","iloveconverts","qwerty"`
+"owlpdf","owlpdf","owlpdf","123456"
+"owlpdf","owlpdf","owlpdf","qwerty"`
   }
 
   getSampleTSV() {
     return `Name	FirstName	LastName	Password
-iloveconverts	iloveconverts	iloveconverts	123456
-iloveconverts	iloveconverts	iloveconverts	qwerty`
+owlpdf	owlpdf	owlpdf	123456
+owlpdf	owlpdf	owlpdf	qwerty`
   }
 
 }
