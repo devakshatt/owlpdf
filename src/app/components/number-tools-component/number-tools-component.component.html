@@ -1,0 +1,31 @@
+<!--
+  - Number Tools Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="text-center mb-4 mt-5">
+        <h1 class="h3 mb-0 text-danger font-weight-bold">Number Tools</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div *ngFor="let item of numberTools; let i = index" class="col-xl-3 col-md-6 mb-4 animated">
+            <div class="card h-100 py-2 animated" [ngClass]="{'pulse': i === selected }" (mouseover)="mouseOver(i)">
+                <div class="card-body cursor-pointer" routerLink="/{{item.path}}">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="mb-0 text-black">{{ item.title }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

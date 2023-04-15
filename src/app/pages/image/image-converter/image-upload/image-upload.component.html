@@ -1,0 +1,78 @@
+<!--
+  - Convert Image (Image uploading section)
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<div *ngIf="!isConvertSuccess">
+    <div class="row text-center">
+        <div class="col-xl-12">
+            <h1 class="h1 mt-5 font-weight-bold text-primary">Image Converter</h1>
+            <h3 class="h3">Convert {{ input | uppercase }} Image to {{ output | uppercase}} Format</h3>
+        </div>
+    </div>
+
+    <!-- Upload Images -->
+    <div class="row text-center">
+        <div class="pt-5 uploadfilecontainer" accept=".png, .jpg, .jpeg, .bmp, .gif, .tiff" appDragdrop
+            (onFileDropped)="uploadFile($event)">
+
+            <div class="my-2"></div>
+
+            <!-- Select Image -->
+            <a (click)="fileInput.click()" class="btn btn-primary btn-icon-split btn-lg">
+                <span class="text ml-3 mr-3 mt-2 mb-2 custom-link">Select Image</span>
+            </a>
+
+            <!-- Drag & Drop Image -->
+            <p class="mt-2">Or Drag & Drop Image to Convert</p>
+            <input hidden multiple type="file" accept=".png, .jpg, .jpeg, .bmp, .gif, .tiff" #fileInput
+                (change)="uploadFile($event.target.files)">
+            <div class="mt-3 pb-5"></div>
+        </div>
+    </div>
+
+    <!-- Uploaded Images -->
+    <div class="row">
+        <div class="files-list" *ngFor="let file of files;let i= index">
+            <p class="file"> {{ file.name }} ({{humanFileSizeService.humanFileSize(file.size, true)}})</p>
+            <button class="delete-file" (click)="deleteAttachment(i)">
+                <img src="../../../../assets/img/Recycle_Bin_Full.png">
+            </button>
+        </div>
+    </div>
+
+    <!-- Convert Button -->
+    <div class="text-center pb-3" *ngIf="files.length >0">
+        <a class="btn btn-danger btn-icon-split btn-lg" (click)="convertImg()">
+            <span class="text ml-3 mr-3 mt-2 mb-2 custom-link">Convert to {{ output | uppercase }}</span>
+        </a>
+    </div>
+
+    <!-- Steps of Image Converter -->
+    <app-details-section-one></app-details-section-one>
+    <!-- Import Component of Other Image Converter Routes -->
+    <app-details-section-two></app-details-section-two>
+
+    <!-- Load Spinner when Image Compressing -->
+    <ngx-spinner>
+        <p class="text-white"> Your image will start downloading, Stay Calm.. </p>
+    </ngx-spinner>
+</div>
+
+
+<!-- When Successfully Convert Image  -->
+<div class="text-center" *ngIf="isConvertSuccess">
+    <div class="col-xl-12">
+        <h1 class="h1 mt-5 font-weight-bold">Your Images successfully converted!</h1>
+        <div class="my-5"></div>
+        <a class="btn btn-danger btn-icon-split btn-lg" (click)="downloadImages()">
+            <span class="text ml-3 mr-3 mt-2 mb-2 custom-link">Download Converted Images</span></a>
+
+        <div class="my-2"></div>
+    </div>
+
+    <!-- Import Component of Other Image Converter Routes -->
+    <app-details-section-two></app-details-section-two>
+</div>

@@ -1,0 +1,185 @@
+<!--
+  - Number Tools Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<section class="banner-area">
+    <div class="container">
+        <div class="text-center mb-5 mt-5">
+            <h1 class="h3 mb-0 text-danger font-weight-bold">{{title}}</h1>
+            <p>{{subTitle}}</p>
+        </div>
+
+        <div class="row fullscreen align-items-center justify-content-between text-center">
+            <div class="col-lg-12 col-md-12">
+                <div class="mt-10">
+                    <!-- Alert Box -->
+                    <div class="alert alert-primary" role="alert" *ngIf="showAlert">
+                        Please enter some content in textbox
+                    </div>
+
+                    <!-- Text Box -->
+                    <textarea class="single-textarea" placeholder="Type or paste your content here"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type or paste your content here'"
+                        required [(ngModel)]="text" #outputText></textarea>
+
+                </div>
+
+                <div class="row">
+                    <div class="textcenter">
+                        <div class="btn-toolbar mt-3 mb-2">
+                            <div class="mr-2" *ngIf="url == 'numbers-to-words' || url == 'number-tools'">
+                                <button type="button" (click)="convert('numbers-to-words')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Numbers To Words</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'words-to-numbers' || url == 'number-tools'">
+                                <button type="button" (click)="convert('words-to-numbers')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Words To Numbers</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'decimal-to-roman' || url == 'number-tools'">
+                                <button type="button" (click)="convert('decimal-to-roman')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Decimal To Roman</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'roman-to-decimal' || url == 'number-tools'">
+                                <button type="button" (click)="convert('roman-to-decimal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Roman To Decimal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'binary-to-decimal' || url == 'number-tools'">
+                                <button type="button" (click)="convert('binary-to-decimal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Binary To Decimal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'binary-to-hex'">
+                                <button type="button" (click)="convert('binary-to-hex')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Binary To Hex</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'binary-to-octal'">
+                                <button type="button" (click)="convert('binary-to-octal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Binary To Octal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'decimal-to-hex'">
+                                <button type="button" (click)="convert('decimal-to-hex')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Decimal To Hex</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'decimal-to-binary'">
+                                <button type="button" (click)="convert('decimal-to-binary')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Decimal To Binary</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'decimal-to-octal'">
+                                <button type="button" (click)="convert('decimal-to-octal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Decimal To Octal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'hex-to-binary'">
+                                <button type="button" (click)="convert('hex-to-binary')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Hex To Binary</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'hex-to-decimal'">
+                                <button type="button" (click)="convert('hex-to-decimal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Hex To Decimal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'hex-to-octal'">
+                                <button type="button" (click)="convert('hex-to-octal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Hex To Octal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'octal-to-decimal'">
+                                <button type="button" (click)="convert('octal-to-decimal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Octal To Decimal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'octal-to-decimal'">
+                                <button type="button" (click)="convert('octal-to-binary')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Octal To Binary</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'octal-to-hex'">
+                                <button type="button" (click)="convert('octal-to-hex')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Octal To Hex</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-to-binary'">
+                                <button type="button" (click)="convert('text-to-binary')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text To Binary</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'binary-to-text'">
+                                <button type="button" (click)="convert('binary-to-text')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Binary To Text</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-to-ascii'">
+                                <button type="button" (click)="convert('text-to-ascii')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text To ASCII</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'ascii-to-text'">
+                                <button type="button" (click)="convert('ascii-to-text')"
+                                    class="btn btn-success btn-icon-split"><span class="text">ASCII To Text</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-to-octal'">
+                                <button type="button" (click)="convert('text-to-octal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text To Octal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'octal-to-text'">
+                                <button type="button" (click)="convert('octal-to-text')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Octal To Text</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'octal-to-text'">
+                                <button type="button" (click)="convert('text-to-hex')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text To Hex</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'hex-to-text'">
+                                <button type="button" (click)="convert('hex-to-text')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Hex To Text</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-to-decimal'">
+                                <button type="button" (click)="convert('text-to-decimal')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text To Decimal</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'decimal-to-text'">
+                                <button type="button" (click)="convert('decimal-to-text')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Decimal To Text</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="textcenter">
+                        <div class="btn-toolbar mt-3 mb-2">
+                            <div class="mr-2"><button type="button" (click)="download()"
+                                    class="btn btn-primary btn-icon-split"><span class="text">Download</span></button>
+                            </div>
+                            <div class="mr-2"><button type="button" (click)="copyClipboard(outputText)"
+                                    class="btn btn-info btn-icon-split"><span class="text">Copy
+                                        Clipboard</span></button></div>
+                            <div class="mr-2"><button type="button" (click)="clear()"
+                                    class="btn btn-danger btn-icon-split"><span class="text">Clear</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

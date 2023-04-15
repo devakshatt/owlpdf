@@ -1,0 +1,26 @@
+<!--
+  - Recognition languages Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<section class="awesome-feature-area section_padding_0_50 clearfix" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="text-info">Recognition Languages</h2>
+                    <div class="line-shape mb-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supported All Languages -->
+        <div class="row">
+            <div class="col-12 col-sm-3" *ngFor="let item of languages">
+                {{item.language}}
+            </div>
+        </div>
+    </div>
+</section>

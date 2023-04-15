@@ -1,0 +1,101 @@
+<!--
+  - Image Upload Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<div id="ocr-image-upload">
+    <div class="row text-center">
+        <div class="col-xl-12">
+
+            <!-- Heading -->
+            <h1 class="h1 mt-5 font-weight-bold text-info">OCR Text Scanner (Image to Text Simple)</h1>
+
+            <!-- Sub heading -->
+            <h5 class="h5">Most accurate OCR scanner, recognize the characters from an image with high (95% to 100%)
+                accuracy.</h5>
+            <p class="font-weight-bold">Supports 100+ Languages</p>
+
+            <div class="line-shape mb-4"></div>
+
+            <!-- Display message when user click on convert button -->
+            <p class="font-weight-bold text-success" *ngIf="startScanning">Start Scanning</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar Component -->
+    <!-- Display progressing when start converting image to text -->
+    <div class="row mt-5" *ngIf="progress > 0">
+        <div class="col-lg-12">
+            <progress-bar [progress]="progress" [color]="'#09b74f'"></progress-bar>
+        </div>
+    </div>
+
+
+    <!-- Image Uploading Steps -->
+    <div class="row text-center mt-5">
+
+        <!-- Step 1 - Select Image -->
+        <div class="col-12 col-sm-6 col-lg-4 mb-2">
+            <h5>Step 1 (Select Image)</h5><br />
+            <a (click)="fileInput.click()" class="btn btn-primary btn-icon-split btn-lg">
+                <span class="text ml-2 mr-2 mt-1 mb-1 custom-link">Select Image</span>
+            </a>
+            <input hidden type="file" accept=".png, .jpg, .jpeg, .bmp" #fileInput
+                (change)="uploadFile($event.target.files)">
+            <br>
+            <p class="mt-3 font-weight-bold" *ngIf="fileInfo">{{fileInfo.name}}</p>
+        </div>
+
+        <!-- Step 2 - Select Language -->
+        <div class="col-12 col-sm-6 col-lg-4 mb-2">
+            <h5 class="mb-4">Step 2 (Select Language)</h5><br />
+            <select class="form-control" id="to" [(ngModel)]="selectedLanguage"
+                (change)="changeLanguage(selectedLanguage)">
+                <option *ngFor="let item of languages" [value]="item.langcode">{{ item.language }}</option>
+            </select>
+            <br>
+            <p>Select correct language of text on image</p>
+        </div>
+
+
+        <!-- Step 3 - Image to Text Convert Button -->
+        <div class="col-12 col-sm-6 col-lg-4 mb-2">
+            <h5>Step 3 (Convert)</h5><br />
+            <button class="btn btn-success btn-icon-split btn-lg" [disabled]="!fileInfo.name" (click)="convertToOCR()">
+                <span class="text ml-2 mr-2 mt-1 mb-1 custom-link">Convert</span>
+            </button>
+        </div>
+
+        <!-- OCR Output -->
+        <div class="col-12" id="ocrOutput">
+            <div class="mr-5 mb-4 ml-4" *ngIf="ocrOutput">
+                <h1 class="h1 mt-5 font-weight-bold text-primary">OCR Output</h1>
+                <div class="line-shape mb-4"></div>
+
+                <!-- Text Box of Output Image -->
+                <textarea class="form-control col-12" id="exampleFormControlTextarea1"
+                    [(ngModel)]="ocrOutput"> {{ocrOutput}} </textarea>
+
+                <!-- Save Option -->
+                <h3 class="h3 mt-4">FileName:
+
+                    <!-- User can set text filename (By default image file set in input box) -->
+                    <input type="text" [(ngModel)]="fileName"><span>.txt</span>&nbsp;
+
+                    <!-- Text File Download Button -->
+                    <button class="btn btn-primary" (click)="downloadOCR()">
+                        <span class="text custom-link"> Download</span>
+                    </button>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import How OCR Work Component -->
+    <app-how-ocr-work></app-how-ocr-work>
+
+    <!-- Import Recognition Languages Component -->
+    <app-recognition-languages></app-recognition-languages>
+</div>

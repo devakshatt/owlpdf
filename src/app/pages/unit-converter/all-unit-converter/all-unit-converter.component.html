@@ -1,0 +1,98 @@
+<!--
+  - Main Unit Converters Page
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<div class="row">
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h3 class="m-0 font-weight-bold text-darkgreen">{{param | titlecase }} Converter</h3>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <h4 class="m-0 font-weight-bold text-success center" *ngIf="to">Result: {{from}} {{fromSelect}} =
+                    {{to}}
+                    {{toSelect}}
+                </h4>
+
+                <div class="chart-area">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="form-group">
+                                <label for="from">
+                                    <h2>From</h2>
+                                </label>
+                                <input class="form-control form-control-lg" type="number" placeholder="1"
+                                    [(ngModel)]="from" (input)="changeFrom()">
+                                <br />
+
+                                <select *ngIf="!isMobile" multiple class="form-control" id="from"
+                                    (change)="changeSelectFrom(fromSelect)" [(ngModel)]="fromSelect">
+                                    <option *ngFor="let item of allData; let i = index" [value]="item.abbr">
+                                        {{ item.singular }}
+                                        ({{item.abbr}})</option>
+                                </select>
+
+                                <select *ngIf="isMobile" class="form-control" id="from"
+                                    (change)="changeSelectFrom(fromSelect)" [(ngModel)]="fromSelect">
+                                    <option *ngFor="let item of allData; let i = index" [value]="item.abbr">
+                                        {{ item.singular }}
+                                        ({{item.abbr}})</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="form-group">
+                                <label for="from">
+                                    <h2>To</h2>
+                                </label>
+                                <input class="form-control form-control-lg" type="number" placeholder="1"
+                                    [(ngModel)]="to" disabled>
+                                <br />
+                                <select *ngIf="!isMobile" multiple class="form-control" id="to" [(ngModel)]="toSelect"
+                                    (change)="changeSelectTo(toSelect)">
+                                    <option *ngFor="let item of allData" [value]="item.abbr">{{ item.singular }}
+                                        ({{item.abbr}})</option>
+                                </select>
+
+                                <select *ngIf="isMobile" class="form-control" id="to" [(ngModel)]="toSelect"
+                                    (change)="changeSelectTo(toSelect)">
+                                    <option *ngFor="let item of allData" [value]="item.abbr">{{ item.singular }}
+                                        ({{item.abbr}})</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-darkgreen">{{ param | titlecase }} Unit Conversion</h1>
+    </div>
+
+    <ul *ngFor="let item1 of allData; let i = index; let lastItem = last;">
+        <div *ngFor="let item2 of allData; let i = index; let lastItem = last;">
+            <div *ngIf="item1.abbr != item2.abbr">
+                <div class="text-black">1 {{ item1.singular}} ({{item1.abbr}}) = {{getValue(item1.abbr, item2.abbr)}}
+                    {{item2.singular}}
+                    ({{item2.abbr}})</div>
+                <a rel="nofollow" href="" routerLink="/{{item1.abbr}}-to-{{item2.abbr}}">
+                    {{item1.singular}} to {{item2.singular}} ({{item1.abbr}} to {{item2.abbr}})</a>
+                <span> | </span>
+                <a rel="nofollow" href="" routerLink="/{{item2.abbr}}-to-{{item1.abbr}}">
+                    {{item2.singular}} to {{item1.singular}} ({{item2.abbr}} to {{item1.abbr}})</a>
+            </div>
+        </div>
+    </ul>
+</div>

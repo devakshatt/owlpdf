@@ -1,0 +1,56 @@
+<!--
+  - Home Page Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar Component -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Header Component -->
+            <app-header></app-header>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Horizontal Ad -->
+                <ng2-adsense *ngIf="loading"></ng2-adsense>
+
+                <!-- Image Converter Component -->
+                <app-image-components></app-image-components>
+
+                <!-- Unit Converter Component -->
+                <app-unit-converters></app-unit-converters>
+
+                <!-- Text Tools Component -->
+                <app-text-tools-component></app-text-tools-component>
+
+                <!-- Number Tools Component -->
+                <app-number-tools-component></app-number-tools-component>
+
+                <!-- Encryption Tools Component -->
+                <app-encryption-tools-component></app-encryption-tools-component>
+
+                <!-- Conversion Tools Component -->
+                <app-conversion-tools-component></app-conversion-tools-component>
+
+                <!-- Horizontal Ad -->
+                <ng2-adsense *ngIf="loading"></ng2-adsense>
+            </div>
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+</div>
+
+<!-- Footer Component -->
+<app-footer></app-footer>

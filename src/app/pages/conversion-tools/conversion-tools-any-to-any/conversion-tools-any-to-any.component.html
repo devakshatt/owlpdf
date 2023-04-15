@@ -1,0 +1,54 @@
+<!--
+  - Conversion Tools Component (Contents)
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<div>
+    <!-- Page Heading -->
+    <div class="text-center mb-5 mt-5">
+        <h1 class="h3 mb-0 text-danger font-weight-bold">{{ input | uppercase }} To {{ output | uppercase }} Converter
+        </h1>
+    </div>
+
+    <div class="col-12">
+        <div class="mb-4">
+
+            <!-- Input -->
+            <div class="text-center mt-5">
+                <p class="font-weight-bold">Enter your {{ input| uppercase }}</p>
+            </div>
+
+            <a rel="nofollow" class="text-danger close cursor-pointer" (click)="getsample(input)"><span class="text">Get
+                    Sample
+                    {{ input |uppercase }}</span></a>
+
+            <textarea autofocus class="form-control col-12" placeholder="Enter Your {{input|uppercase}}"
+                [(ngModel)]="inputValue"></textarea>
+
+            <div class="text-center mt-3 mb-3">
+                <button class="btn btn-success btn-lg" (click)="convert()">
+                    <span class="text custom-link">Convert To {{ output | uppercase }}</span>
+                </button>
+            </div>
+
+
+            <!-- Result -->
+            <div id="result">
+                <div class="text-center mt-5">
+                    <h1 class="h3 mb-0 font-weight-bold">Result</h1>
+                    <div class="line-shape mb-4"></div>
+                    <p class="font-weight-bold">{{ output | uppercase }}</p>
+                    <textarea class="form-control  col-12" readonly #outputElement>{{outputValue }}</textarea>
+                    <div class="text-center mt-3 mb-3">
+                        <p [hidden]="!copied" class="text-success font-weight-bold">Copied</p>
+                        <button type="button" class="btn btn-primary btn-lg" (click)="copyClipboard(outputElement)">
+                            <span class="text custom-link">Copy To Clipboard</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+select.form-control[size],
+select.form-control[multiple] {
+    height: 150px;
+}
+
+.chart-area {
+    height: 100% !important;
+}

@@ -1,0 +1,146 @@
+<!--
+  - Sub Unit Converters Page
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<div class="row">
+    <div class="col-xl-12 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h3 class="m-0 font-weight-bold text-darkgreen">{{ param1Details.singular | titlecase }} to
+                    {{ param2Details.singular | titlecase }}
+                    Converter</h3>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <h4 class="m-0 font-weight-bold text-success center" *ngIf="toInput">Result: {{fromInput}}
+                    {{param1Details.abbr}} =
+                    {{toInput}}
+                    {{param2Details.abbr}}
+                </h4>
+
+                <div class="chart-area">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="form-group">
+                                <label for="from">
+                                    <h2>{{ param1Details.singular | titlecase }} ({{param1Details.abbr}})</h2>
+                                </label>
+                                <input class="form-control form-control-lg" type="number" placeholder="1"
+                                    [(ngModel)]="fromInput" (input)="changeFrom()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="form-group">
+                                <label for="from">
+                                    <h2>{{ param2Details.singular | titlecase }} ({{param2Details.abbr}})</h2>
+                                </label>
+                                <input class="form-control form-control-lg" type="number" placeholder="1"
+                                    [(ngModel)]="toInput" (input)="changeTo()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <a class="btn btn-secondary btn-icon-split spaceBtn-left" (click)="clear()">
+                            <span class="text">Clear</span>
+                        </a>
+                        <a class="btn btn-stext-darkgreen btn-icon-split spaceBtn-left" (click)="convert()">
+                            <span class="text">Convert</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-darkgreen">Convert {{ param1Details.singular | titlecase }} to
+            {{ param2Details.singular | titlecase }}</h1>
+    </div>
+    <p class="text-black">
+        1 {{ param1Details.abbr }} = {{getValue(1, param1Details.abbr, param2Details.abbr)}} {{ param2Details.abbr }}
+        <br />
+        1 {{ param2Details.abbr }} = {{getValue(1, param2Details.abbr, param1Details.abbr)}} {{ param1Details.abbr }}
+    </p>
+
+    <div class="text-black">
+        <p class="font-weight-bold h5">
+            Example:
+        </p>
+        <p><span class="font-weight-bold">Convert 10 {{ param1Details.abbr }} to {{ param2Details.abbr }} </span><br />
+            10 {{ param1Details.abbr }} = 10 &times; {{getValue(1, param1Details.abbr, param2Details.abbr)}}
+            {{ param2Details.abbr }} =
+            {{getValue(10, param1Details.abbr, param2Details.abbr)}} {{ param2Details.abbr }}</p>
+
+        <p><span class="font-weight-bold">Convert 10 {{ param2Details.abbr }} to {{ param1Details.abbr }} </span><br />
+            10 {{ param2Details.abbr }} = 10 &times; {{getValue(1, param2Details.abbr, param1Details.abbr)}}
+            {{ param1Details.abbr }} =
+            {{getValue(10, param2Details.abbr, param1Details.abbr)}} {{ param1Details.abbr }}</p>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-darkgreen">{{ param1Details.singular | titlecase }} to
+            {{ param2Details.singular | titlecase }}
+            ({{param1Details.abbr}} to {{param2Details.abbr}}) Conversion</h1>
+    </div>
+
+
+    <ul class="text-black">
+        <li>0.01 ({{param1Details.abbr}}) = {{getValue(0.01, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})
+        </li>
+        <li>0.1 ({{param1Details.abbr}}) = {{getValue(0.1, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+        <li>1 ({{param1Details.abbr}}) = {{getValue(1, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+        <li>10 ({{param1Details.abbr}}) = {{getValue(10, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+        <li>20 ({{param1Details.abbr}}) = {{getValue(20, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+        <li>50 ({{param1Details.abbr}}) = {{getValue(50, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+        <li>100 ({{param1Details.abbr}}) = {{getValue(100, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+        <li>500 ({{param1Details.abbr}}) = {{getValue(500, param1Details.abbr, param2Details.abbr)}}
+            ({{param2Details.abbr}})</li>
+    </ul>
+</div>
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-darkgreen">{{param2Details.singular | titlecase}} to
+            {{param1Details.singular | titlecase}}
+            ({{param2Details.abbr}} to {{param1Details.abbr}}) Conversion</h1>
+    </div>
+
+    <ul class="text-black">
+        <li>0.01 ({{param2Details.abbr}}) = {{getValue(0.01, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>0.1 ({{param2Details.abbr}}) = {{getValue(0.1, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>1 ({{param2Details.abbr}}) = {{getValue(1, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>10 ({{param2Details.abbr}}) = {{getValue(10, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>20 ({{param2Details.abbr}}) = {{getValue(20, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>50 ({{param2Details.abbr}}) = {{getValue(50, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>100 ({{param2Details.abbr}}) = {{getValue(100, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+        <li>500 ({{param2Details.abbr}}) = {{getValue(500, param2Details.abbr, param1Details.abbr)}}
+            ({{param1Details.abbr}})</li>
+    </ul>
+</div>

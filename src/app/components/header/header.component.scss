@@ -1,0 +1,25 @@
+.social-icon {
+    a {
+        text-align: center;
+    }
+
+    i {
+        background: #9b69e4;
+        font-size: 14px;
+        color: #ffffff;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-weight: 500;
+        border-radius: 10px 10px 10px 0px;
+        margin-right: 10px;
+    }
+
+    i:hover {
+        background: #fb397d;
+        color: #fff;
+        -webkit-transition-duration: 500ms;
+        -o-transition-duration: 500ms;
+        transition-duration: 500ms;
+    }
+}

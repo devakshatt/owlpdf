@@ -1,0 +1,31 @@
+<!--
+  - Encryption Tools Sidebar Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="" routerLink="/">
+        <!-- Logo -->
+        <img *ngIf="logo" class="logo" [src]="logo">
+
+        <!-- Title -->
+        <div class="sidebar-brand-text mx-3">{{title}}</div>
+    </a>
+    <!-- Nav Item - Dashboard -->
+
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading mb-2">
+        Encryption Tools
+    </div>
+    <hr class="sidebar-divider">
+    <li class="nav-item" *ngFor="let item of sideMenuOptions">
+        <a class="nav-link" [class.selected]="item.route === selectedRoute" href=""
+            routerLink="/{{item.route}}"><span>{{ item.name }}</span></a>
+    </li>
+</ul>
+<!-- End of Sidebar -->

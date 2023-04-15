@@ -1,0 +1,50 @@
+<!--
+  - Image Tools Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="text-center mb-4 mt-5">
+        <h1 class="h3 mb-0 text-danger font-weight-bold">Image Tools</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100 py-2 animated">
+                <div class="card-body cursor-pointer" routerLink="/compress-image">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="mb-0 text-black">Compress Image
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let item of sideMenuOptions; let i = index" class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100 py-2 animated" [ngClass]="{'pulse': i === selected }" (mouseover)="mouseOver(i)">
+                <div class="card-body cursor-pointer" routerLink="/{{item.route}}">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">{{ item.title }}
+                            </div>
+                            <div class="mb-0 text-black">{{ item.name }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <img width="40px" [src]="item.img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

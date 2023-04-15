@@ -1,0 +1,210 @@
+<!--
+  - Text Tools Page
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<section class="banner-area">
+    <div class="container">
+        <div class="text-center mb-5 mt-5">
+            <h1 class="h3 mb-0 text-danger font-weight-bold">{{title}}</h1>
+            <p>{{subTitle}}</p>
+        </div>
+
+        <div class="row fullscreen align-items-center justify-content-between text-center">
+            <div class="col-lg-12 col-md-12">
+                <div class="mt-10">
+                    <!-- Alert Box -->
+                    <div class="alert alert-primary" role="alert" *ngIf="showAlert">
+                        Please enter some content in textbox
+                    </div>
+
+                    <!-- Text Box -->
+                    <textarea class="single-textarea" placeholder="Type or paste your content here"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type or paste your content here'"
+                        required [(ngModel)]="text" (keyup)="onKey($event)" #outputText></textarea>
+
+                    <!-- Split Text -->
+                    <div class="d-flex justify-content-center align-items-center" *ngIf="url == 'split-text'">
+                        <b>Delimiter: </b>
+                        <div class="symbol mx-sm-3 mb-2">
+                            <input type="text" placeholder="Type your Delimiter" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Type your Delimiter'" class="single-input"
+                                [(ngModel)]="symbol">
+                        </div>
+                        <b>Space by Default</b>
+                    </div>
+                    <!-- Find and Replace Text -->
+                    <div class="d-flex justify-content-center align-items-center" *ngIf="url == 'text-replace'">
+                        <b>Find Text: </b>
+                        <div class="symbol mx-sm-3 mb-2">
+                            <input type="text" placeholder="Type content" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Type content'" class="single-input"
+                                [(ngModel)]="replaceFrom">
+                        </div>
+                        <b>Replace With: </b>
+                        <div class="symbol mx-sm-3 mb-2">
+                            <input type="text" placeholder="Type content" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Type content'" class="single-input" [(ngModel)]="replaceTo">
+                        </div>
+                    </div>
+
+                    <!-- Total Count -->
+                    <div>
+                        <b>Total Character: {{totalCharacter}} | Total Words: {{totalWords}} | Total Line:
+                            {{totalLine}} | Total Paragraphs: {{totalParagraphs}}</b>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="textcenter">
+                        <div class="btn-toolbar mt-3 mb-2">
+                            <div class="mr-2" *ngIf="url == 'text-lowercase' || url == 'text-tools'">
+                                <button type="button" (click)="convert('text-lowercase')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text Lower Case</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-uppercase' || url == 'text-tools'">
+                                <button type="button" (click)="convert('text-uppercase')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text Upper Case</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-titlecase' || url == 'text-tools'"><button
+                                    type="button" (click)="convert('text-titlecase')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text Title Case</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-invert-case' || url == 'text-tools'"><button
+                                    type="button" (click)="convert('text-invert-case')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text Inverse Case</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-capitalize' || url == 'text-tools'"><button
+                                    type="button" (click)="convert('text-capitalize')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Text
+                                        Capitalize</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-reverse' || url == 'text-tools'"><button type="button"
+                                    (click)="convert('text-reverse')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Text Reverse</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'spaces-to-tabs'"><button type="button"
+                                    (click)="convert('spaces-to-tabs')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Spaces to Tabs</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'tabs-to-spaces'"><button type="button"
+                                    (click)="convert('tabs-to-spaces')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Tabs to Spaces</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'spaces-to-newlines'"><button type="button"
+                                    (click)="convert('spaces-to-newlines')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Spaces To Newlines</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'newlines-to-spaces'"><button type="button"
+                                    (click)="convert('newlines-to-spaces')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Newlines To Spaces</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'remove-letter-accents'"><button type="button"
+                                    (click)="convert('remove-letter-accents')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Remove Letter
+                                        Accents</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'remove-whitespace'"><button type="button"
+                                    (click)="convert('remove-whitespace')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Remove Extra Whitespace</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'remove-all-whitespace'"><button type="button"
+                                    (click)="convert('remove-all-whitespace')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Remove All
+                                        Whitespace</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'extract-emails'"><button type="button"
+                                    (click)="convert('extract-emails')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Extract Emails</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'extract-urls'"><button type="button"
+                                    (click)="convert('extract-urls')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Extract URLs</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'extract-numbers'"><button type="button"
+                                    (click)="convert('extract-numbers')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Extract Numbers</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-to-morse'"><button type="button"
+                                    (click)="convert('text-to-morse')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Text To Morse</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'morse-to-text'"><button type="button"
+                                    (click)="convert('morse-to-text')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Morse To Text</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'count-character-frequency'"><button type="button"
+                                    (click)="convert('count-character-frequency')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Count Character
+                                        Frequency</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'count-word-frequency'"><button type="button"
+                                    (click)="convert('count-word-frequency')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Count Word
+                                        Frequency</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'split-text'"><button type="button"
+                                    (click)="convert('split-text')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Split Text</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'delete-duplicate-lines'"><button type="button"
+                                    (click)="convert('delete-duplicate-lines')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Delete Duplicate
+                                        Lines</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'text-replace'"><button type="button"
+                                    (click)="convert('text-replace')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Text Replace</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'remove-empty-lines'"><button type="button"
+                                    (click)="convert('remove-empty-lines')" class="btn btn-success btn-icon-split"><span
+                                        class="text">Remove Empty Lines</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="textcenter">
+                        <div class="btn-toolbar mt-3 mb-2">
+                            <div class="mr-2"><button type="button" (click)="download()"
+                                    class="btn btn-primary btn-icon-split"><span class="text">Download</span></button>
+                            </div>
+                            <div class="mr-2"><button type="button" (click)="copyClipboard(outputText)"
+                                    class="btn btn-info btn-icon-split"><span class="text">Copy
+                                        Clipboard</span></button></div>
+                            <div class="mr-2"><button type="button" (click)="clear()"
+                                    class="btn btn-danger btn-icon-split"><span class="text">Clear</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

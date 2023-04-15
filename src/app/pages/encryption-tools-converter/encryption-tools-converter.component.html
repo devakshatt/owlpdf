@@ -1,0 +1,42 @@
+<!--
+  - Encryption Tools Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <app-encryption-tools-sidebar [selectedRoute]="selectedRoute"></app-encryption-tools-sidebar>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Header -->
+            <app-header></app-header>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Horizontal Ad -->
+                <ng2-adsense *ngIf="loading"></ng2-adsense>
+
+                <router-outlet></router-outlet>
+
+                <!-- Horizontal Ad -->
+                <ng2-adsense *ngIf="loading"></ng2-adsense>
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

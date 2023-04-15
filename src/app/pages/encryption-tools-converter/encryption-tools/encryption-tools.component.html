@@ -1,0 +1,116 @@
+<!--
+  - Encryption Tools Component
+  - @author    AppsPlaces <appsplaces@gmail.com>
+  - @copyright Copyright (c) 2021
+  - @license   AppsPlaces
+-->
+
+<section class="banner-area">
+    <div class="container">
+        <div class="text-center mb-5 mt-5">
+            <h1 class="h3 mb-0 text-danger font-weight-bold">{{title}}</h1>
+            <p>{{subTitle}}</p>
+        </div>
+
+        <div class="row fullscreen align-items-center justify-content-between text-center">
+            <div class="col-lg-12 col-md-12">
+                <div class="mt-10">
+                    <!-- Alert Box -->
+                    <div class="alert alert-primary" role="alert" *ngIf="showAlert">
+                        Please enter some content in textbox
+                    </div>
+
+                    <!-- Text Box -->
+                    <textarea class="single-textarea" placeholder="Type or paste your content here"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type or paste your content here'"
+                        required [(ngModel)]="text" #outputText></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="textcenter">
+                        <div class="btn-toolbar mt-3 mb-2">
+                            <div class="mr-2" *ngIf="url == 'base64-encode' || url == 'encryption-tools'">
+                                <button type="button" (click)="convert('base64-encode')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Base64 Encode</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'base64-decode' || url == 'encryption-tools'">
+                                <button type="button" (click)="convert('base64-decode')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Base64 Decode</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'url-encode' || url == 'encryption-tools'">
+                                <button type="button" (click)="convert('url-encode')"
+                                    class="btn btn-success btn-icon-split"><span class="text">URL Encode</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'url-decode' || url == 'encryption-tools'">
+                                <button type="button" (click)="convert('url-decode')"
+                                    class="btn btn-success btn-icon-split"><span class="text">URL Decode</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'md2-hash-generator'">
+                                <button type="button" (click)="convert('md2-hash-generator')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Generate MD2 Hash</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'md4-hash-generator'">
+                                <button type="button" (click)="convert('md4-hash-generator')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Generate MD4 Hash</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'md5-hash-generator'">
+                                <button type="button" (click)="convert('md5-hash-generator')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Generate MD5 Hash</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'sha1-hash-generator'">
+                                <button type="button" (click)="convert('sha1-hash-generator')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Generate SHA1 Hash</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'sha256-hash-generator'">
+                                <button type="button" (click)="convert('sha256-hash-generator')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Generate SHA256
+                                        Hash</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'sha512-hash-generator'">
+                                <button type="button" (click)="convert('sha512-hash-generator')"
+                                    class="btn btn-success btn-icon-split"><span class="text">Generate SHA512
+                                        Hash</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'utf8-encode'">
+                                <button type="button" (click)="convert('utf8-encode')"
+                                    class="btn btn-success btn-icon-split"><span class="text">UTF8 Encode</span>
+                                </button>
+                            </div>
+                            <div class="mr-2" *ngIf="url == 'utf8-decode'">
+                                <button type="button" (click)="convert('utf8-decode')"
+                                    class="btn btn-success btn-icon-split"><span class="text">UTF8 Decode</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="textcenter">
+                        <div class="btn-toolbar mt-3 mb-2">
+                            <div class="mr-2"><button type="button" (click)="download()"
+                                    class="btn btn-primary btn-icon-split"><span class="text">Download</span></button>
+                            </div>
+                            <div class="mr-2"><button type="button" (click)="copyClipboard(outputText)"
+                                    class="btn btn-info btn-icon-split"><span class="text">Copy
+                                        Clipboard</span></button></div>
+                            <div class="mr-2"><button type="button" (click)="clear()"
+                                    class="btn btn-danger btn-icon-split"><span class="text">Clear</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
