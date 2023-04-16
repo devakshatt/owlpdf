@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/owlpdf",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -40,6 +40,7 @@
               "src/assets/vendor/jimp.min.js",
               "src/assets/vendor/jszip.min.js",
               "src/assets/vendor/FileSaver.js",
+              "src/assets/vendor/jsonToText.js",
               "./node_modules/convert-units/lib/index.js",
               "src/assets/js/main.min.js"
             ],
