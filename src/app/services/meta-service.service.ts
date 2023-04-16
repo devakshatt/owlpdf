@@ -1,7 +1,7 @@
 /**
  * Meta Tags Service
  * These tags are shown by search engines as a small text item in the search results
- * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @author    CodePrimus <akshataggarwal005@gmail.com>
  * @copyright Copyright (c) 2023
  */
 

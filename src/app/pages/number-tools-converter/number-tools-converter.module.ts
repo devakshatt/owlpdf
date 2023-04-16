@@ -1,6 +1,6 @@
 /**
  * Number Tools Converter Page Module
- * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @author    CodePrimus <akshataggarwal005@gmail.com>
  * @copyright Copyright (c) 2023
 
  */

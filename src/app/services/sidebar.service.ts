@@ -1,6 +1,6 @@
 /**
  * Sidebar Service
- * @author    AppsPlaces <akshataggarwal005@gmail.com>
+ * @author    CodePrimus <akshataggarwal005@gmail.com>
  * @copyright Copyright (c) 2023
 
  */
@@ -13,7 +13,9 @@ declare var jQuery: any;
 })
 export class SidebarService {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   sidebar() {
     (function ($) {
@@ -31,8 +33,12 @@ export class SidebarService {
       // Close any open menu accordions when window is resized below 768px
       $(window).resize(function () {
         if ($(window).width() < 768) {
+          $(".sidebar").addClass("toggled");
           $('.sidebar .collapse').collapse('hide');
-        };
+        } else {
+          $(".sidebar").removeClass("toggled");
+          $('.sidebar .collapse').collapse('hide');
+        }
       });
 
       // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
