@@ -40,7 +40,6 @@
               "src/assets/vendor/jimp.min.js",
               "src/assets/vendor/jszip.min.js",
               "src/assets/vendor/FileSaver.js",
-              "src/assets/vendor/jsonToText.js",
               "./node_modules/convert-units/lib/index.js",
               "src/assets/js/main.min.js"
             ],
