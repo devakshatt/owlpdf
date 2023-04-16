@@ -70,6 +70,16 @@ export class SidebarService {
         e.preventDefault();
       });
 
+      $("document").ready(function () {
+        if ($(window).width() < 768) {
+          $(".sidebar").addClass("toggled");
+          $('.sidebar .collapse').collapse('hide');
+        } else {
+          $(".sidebar").removeClass("toggled");
+          $('.sidebar .collapse').collapse('hide');
+        }
+      });
+
     })(jQuery); // End of use strict
   }
 }
